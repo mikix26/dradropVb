@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=="utf-8">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <script src="./script/jquery-3.6.0.min.js"></script>
+  <script src="./script/dropzone.js?v=6"></script>
+  <script>
+    Dropzone.autoDiscover = false;
+  </script>
+
+  <style>
+    html, body {
+      height: 100%;
+    }
+    #actions {
+      margin: 2em 0;
+    }
+
+
+    /* Mimic table appearance */
+    div.table {
+      display: table;
+    }
+    div.table .file-row {
+      display: table-row;
+    }
+    div.table .file-row > div {
+      display: table-cell;
+      vertical-align: middle;
+      border-top: 1px solid #ddd;
+      padding: 0px;
+    }
+	 .file-row div > p{
+	 margin:0;
+	 }
+    div.table .file-row:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+
+
+    /* The total progress gets shown by event listeners */
+    #total-progress {
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+
+    /* Hide the progress bar when finished */
+    #previews .file-row.dz-success .progress {
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+
+    /* Hide the delete button initially */
+    #previews .file-row .delete {
+      display: none;
+    }
+
+    /* Hide the start and cancel buttons and show the delete button */
+
+    #previews .file-row.dz-success .start,
+    #previews .file-row.dz-success .cancel {
+      display: none;
+    }
+    #previews .file-row.dz-success .delete {
+      display: block;
+    }
+.dropzone{
+    background: #f7f7f7;
+    text-align: center;
+    border: 2px dashed #71bdff;
+    height: 200px;
+}
+.preview img{
+  width:25px ;
+}
+  </style>
+
+
+</head>
+<body ondragstart="return false;" ondrop="return false;">
+  
+  <div class="container" id="container">
+    <div id="actions" class="row">
+
+      <div class="col-lg-7">    
+        <button type="submit" class="btn btn-primary start">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Guardar</span>
+        </button>
+      </div>
+
+
+    </div>
+    <div class="dropzone">
+      <div class="row col-12">
+         <i class="fas fa-cloud-upload-alt" style="font-size:73px;color: #71bdff;"></i>
+      </div>
+        <div class="row col-12">
+        <h3>Arrastrar y soltar para añadir archivo</h2>
+      </div>
+        <div class="row col-12">
+          <span class="btn btn-primary fileinput-button">
+            <span>O Selecciona Archivos....</span>
+        </span>
+   
+      </div>
+     
+    </div>
+     <div class="fallback">
+			<input name="file" id="rfile" type="file" multiple />
+				</div>
+
+    <div class="table table-striped files" id="previews" style="">
+
+      <div id="template" class="file-row row align-items-center">
+
+        <!-- This is used as the file preview template -->
+        <div class="col-4 align-self-center">
+            <span class="preview"><img data-dz-thumbnail /></span>
+        </div>
+        <div class="col-2 align-self-center">
+            <p class="name" data-dz-name></p>
+            <strong class="error text-danger" data-dz-errormessage></strong>
+        </div>
+        <div class="col-5 align-self-center">
+            <p class="size" data-dz-size></p>
+        </div>
+        <div class="col-1 align-self-center">
+          <i data-dz-remove class="fas fa-trash-alt cancel" style="height:15px;width:15px;color:red"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      document.body.addEventListener('dragover', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+}, false);
+document.body.addEventListener('drop', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+}, false);
+      // Get the template HTML and remove it from the doument
+      var previewNode = document.querySelector("#template");
+      previewNode.id = "";
+      var previewTemplate = previewNode.parentNode.innerHTML;
+      previewNode.parentNode.removeChild(previewNode);
+
+      var myDropzone = new Dropzone(".dropzone", { // Make the whole body a dropzone
+        url: "/documentos", // Set the url
+        thumbnailWidth: 80,
+        thumbnailHeight: 80,
+        parallelUploads: 20,
+        dictDefaultMessage:"",
+        previewTemplate: previewTemplate,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#previews", // Define the container to display the previews
+        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+      });
+
+      myDropzone.on("addedfile", function(file) {
+         var ext = file.name.split('.').pop();
+
+          if (ext == "pdf") {
+              file.previewElement.querySelector(".preview img").setAttribute("src", "./imagenes/Pdf_logo.png");
+          } else if (ext.indexOf("doc") != -1) {
+              file.previewElement.querySelector(".preview img").setAttribute("src", "./imagenes/Word_logo.png");
+          } else if (ext.indexOf("xls") != -1) {
+              file.previewElement.querySelector(".preview img").setAttribute("src", "./imagenes/Excell_logo.png");
+          } else if (!(/\.(jpg|png|gif)$/i).test(ext)){
+            file.previewElement.querySelector(".preview img").setAttribute("src", "./imagenes/Default_logo.png");
+          }
+          
+        // Hookup the start button
+       // file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+      });
+         myDropzone.on("dragover", function(e) {
+        document.querySelector(".dropzone").style.backgroundColor = "#e3f5ff";
+        document.querySelector(".dropzone").style.border="4px dashed #71bdff";
+      });
+      myDropzone.on("dragleave", function(e) {
+        document.querySelector(".dropzone").style.backgroundColor = "#f7f7f7";
+        document.querySelector(".dropzone").style.border="2px dashed #71bdff";
+      });
+         myDropzone.on("drop", function(e) {
+        document.querySelector(".dropzone").style.backgroundColor = "#f7f7f7";
+        document.querySelector(".dropzone").style.border="2px dashed #71bdff";
+      });
+
+      // Update the total progress bar
+     /* myDropzone.on("totaluploadprogress", function(progress) {
+        document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+      });
+
+      myDropzone.on("sending", function(file) {
+        // Show the total progress bar when upload starts
+        document.querySelector("#total-progress").style.opacity = "1";
+        // And disable the start button
+        file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+      });
+
+      // Hide the total progress bar when nothing's uploading anymore
+      myDropzone.on("queuecomplete", function(progress) {
+        document.querySelector("#total-progress").style.opacity = "0";
+      });*/
+
+      // Setup the buttons for all transfers
+      // The "add files" button doesn't need to be setup because the config
+      // `clickable` has already been specified.
+      document.querySelector("#actions .start").onclick = function() {
+        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+      };
+     /* document.querySelector("#actions .cancel").onclick = function() {
+        myDropzone.removeAllFiles(true);
+      };*/
+
+
+
+
+
+      // Now fake the file upload, since GitHub does not handle file uploads
+      // and returns a 404
+
+      var minSteps = 6,
+          maxSteps = 60,
+          timeBetweenSteps = 100,
+          bytesPerStep = 100000;
+
+      myDropzone.uploadFiles = function(files) {
+        var self = this;
+
+        for (var i = 0; i < files.length; i++) {
+
+          var file = files[i];
+          totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
+
+          for (var step = 0; step < totalSteps; step++) {
+            var duration = timeBetweenSteps * (step + 1);
+            setTimeout(function(file, totalSteps, step) {
+              return function() {
+                file.upload = {
+                  progress: 100 * (step + 1) / totalSteps,
+                  total: file.size,
+                  bytesSent: (step + 1) * file.size / totalSteps
+                };
+
+                self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
+                if (file.upload.progress == 100) {
+                  file.status = Dropzone.SUCCESS;
+                  self.emit("success", file, 'success', null);
+                  self.emit("complete", file);
+                  self.processQueue();
+                 // myDropzone.removeAllFiles(true);
+                }
+              };
+            }(file, totalSteps, step), duration);
+          }
+        }
+
+      }
+
+    </script>
