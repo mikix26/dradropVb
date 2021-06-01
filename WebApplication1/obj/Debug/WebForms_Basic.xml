@@ -37,7 +37,7 @@ WebApplication1
  Devuelve el objeto de registro Asp.
  </summary>
 </member>
-<member name="F:WebApplication1._Default._UpdatePanel1">
+<member name="F:WebApplication1.Mapas._UpdatePanel1">
 <summary>
 Control UpdatePanel1.
 </summary>
@@ -46,7 +46,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._unidadSelect">
+<member name="F:WebApplication1.Mapas._unidadSelect">
 <summary>
 Control unidadSelect.
 </summary>
@@ -55,7 +55,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._Repeater2">
+<member name="F:WebApplication1.Mapas._Repeater2">
 <summary>
 Control Repeater2.
 </summary>
@@ -64,7 +64,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._json">
+<member name="F:WebApplication1.Mapas._json">
 <summary>
 Control json.
 </summary>
@@ -73,7 +73,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._jsonT">
+<member name="F:WebApplication1.Mapas._jsonT">
 <summary>
 Control jsonT.
 </summary>
@@ -82,7 +82,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._veerdatos">
+<member name="F:WebApplication1.Mapas._veerdatos">
 <summary>
 Control veerdatos.
 </summary>
@@ -91,7 +91,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:WebApplication1._Default._counidad">
+<member name="F:WebApplication1.Mapas._counidad">
 <summary>
 Control counidad.
 </summary>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.vb" Inherits="WebApplication1.Contact" %>
+﻿<%@ Page Title="Contact" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DrapDrop.aspx.vb" Inherits="WebApplication1.DrapDrop" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -137,7 +137,7 @@
         autoQueue: true, // Make sure the files aren't queued until manually added
         previewsContainer: "#previews", // Define the container to display the previews
         clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
-            url: "Contact.aspx",
+            url: "DrapDrop.aspx",
             init: function () {
                 var mydrop = this;
                 this.on("addedfile", function (file) {

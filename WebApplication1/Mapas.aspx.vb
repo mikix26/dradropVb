@@ -7,7 +7,7 @@ Imports GeoJSON.Net.Feature
 Imports Newtonsoft.Json
 Imports GeoJSON.Net.Geometry
 
-Public Class _Default
+Public Class Mapas
     Inherits Page
     Public geoSonUbi As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load

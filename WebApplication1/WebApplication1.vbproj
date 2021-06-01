@@ -131,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Contact.aspx" />
+    <Content Include="DrapDrop.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1854,7 +1854,7 @@
     <Content Include="Content\leaflet-search-master\src\leaflet-search.js" />
     <Content Include="Content\leaflet-search-master\src\leaflet-search.mobile.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="Mapas.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1973,19 +1973,19 @@
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="DrapDrop.aspx.designer.vb">
+      <DependentUpon>DrapDrop.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="DrapDrop.aspx.vb">
+      <DependentUpon>DrapDrop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.vb">
+    <Compile Include="Mapas.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
+      <DependentUpon>Mapas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.designer.vb">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Mapas.aspx.designer.vb">
+      <DependentUpon>Mapas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>

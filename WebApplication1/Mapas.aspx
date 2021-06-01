@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="WebApplication1._Default" %>
+﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Mapas.aspx.vb" Inherits="WebApplication1.Mapas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
